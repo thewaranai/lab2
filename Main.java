@@ -1,22 +1,28 @@
 import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Введите верхний предел:");
-        int n = in.nextInt();
-        System.out.println("Введите x");
-        double x = in.nextDouble();
-        double sum = 0;
-        for (int i  = 0; i <= n; i++)
-        {
-            sum += (Math.pow(-1, n)) * (Math.pow(x, n)) / (getFactorial(n));
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите значение x: ");
+        double x = scanner.nextDouble();
+        System.out.print("Введите количество членов ряда (n): ");
+        int n = scanner.nextInt();
+        double sum = 0.0;
+        for (int i = 0; i < n; i++) {
+            double term = Math.pow(-1, i) * Math.pow(x, i) / factorial(i);
+            sum += term;
         }
-        System.out.println(sum);
+        System.out.println("Результат: " + sum);
+        scanner.close();
     }
-    public static int getFactorial(int f) {
-        int result = 1;
-        for (int i = 1; i <= f; i++) {
-            result = result * i;
+    public static long factorial(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        long result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
         }
         return result;
     }
